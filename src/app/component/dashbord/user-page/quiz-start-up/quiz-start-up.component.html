@@ -1,0 +1,69 @@
+
+<div class="mainDiv" *ngIf="!result">
+  <div *ngIf="!showQuiz; else showQuizz">
+  <mat-card *ngIf="quizData">
+    <p>Read Instruction Very Carefully.</p>
+    <mat-card-header>{{quizData.title}}</mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-subtitle>{{quizData.description}}</mat-card-subtitle>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <h2>Important Instruction</h2>
+      <ul>
+        <li>This quiz is only for purpose.</li>
+        <li>Need to Submit with in time slot.</li>
+        <li>This quiz is only for purpose.</li>
+        <li>Number of Question : <b>{{quizData.noOfQuestion}}</b></li>
+        <li>Minmun number of marks : <b>{{quizData.maxMarks}}</b></li>
+        <li>Time Duration for this Quiz  : <b>20 Minutes</b></li>
+        <li>No <b>Negative Marking</b></li>
+        <li><b>Ones Start, user can't go back until it got Finished !</b></li>
+      </ul>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-stroked-button (click)="startQuiz()">Start </button>
+    </mat-card-actions>
+  </mat-card>
+  </div>
+ <ng-template #showQuizz>
+   <div style="display: flex">
+     <mat-card *ngIf="viewQuestion" style="width: 80%">
+     <mat-card-subtitle>Exercise </mat-card-subtitle>
+
+     <div *ngFor="let que of viewQuestion; let i = index">
+       <mat-card-header>{{quizData.content}}</mat-card-header>
+       <div mat-card-avatar class="example-header-image"></div>
+       <mat-radio-group>
+         <mat-card-title id="example-radio-group-label">{{que.content}}</mat-card-title>
+         <input type="radio" [name]="i" [value]="que.option1" [(ngModel)]="que.givenAnswer"> {{que.option1}}
+         <input type="radio" [name]="i" [value]="que.option2" [(ngModel)]="que.givenAnswer"> {{que.option2}}
+         <input type="radio" [name]="i" [value]="que.option3" [(ngModel)]="que.givenAnswer"> {{que.option3}}
+         <input type="radio" [name]="i" [value]="que.option4" [(ngModel)]="que.givenAnswer"> {{que.option4}}
+       </mat-radio-group>
+       <mat-divider></mat-divider>
+     </div>
+   </mat-card>
+     <div style="margin-left: 20px">
+       <mat-card >
+         <mat-card-subtitle> <span>Quiz will automatically save after specific time <br><b>{{formateTime}}</b></span></mat-card-subtitle>
+         <mat-card-content> <mat-spinner
+           mode="determinate"
+           [value]="((this.leftTime/this.totalTime)*100)"
+         ></mat-spinner></mat-card-content>
+       </mat-card>
+     </div>
+   </div>
+   <button mat-raised-button color="primary" (click)="Submit()">Save Quiz</button>
+
+ </ng-template>
+</div>
+<div *ngIf="result">
+  <div class="mainDiv">
+    <mat-card>
+      <mat-card-title>Total Marks : {{markObtain.toPrecision(1)}}</mat-card-title>
+      <mat-card-subtitle>Correct Answer : {{correctAnswer}}</mat-card-subtitle>
+      <button mat-raised-button color="primary" (click)="result=!result">Retake ?</button>
+    </mat-card>
+  </div>
+
+</div>

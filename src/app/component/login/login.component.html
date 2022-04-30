@@ -1,0 +1,32 @@
+
+
+
+
+
+<div class="homediv">
+    <div class="homeaction" style="margin-top: 10%;">
+        <div class="usernamediv" style="    margin: auto;
+        width: 40%;">
+        <p style="
+         letter-spacing: 2px;
+        font-size: 20px;
+        color: #7b78ff;"
+        >Welcome To Quiz...</p>
+        <hr/>
+        <h1>Log IN </h1>
+        <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <mat-label>Enter User Name</mat-label>
+              <input matInput placeholder="Ex. @Pizza" value="" autocomplete="off" #username >
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="password" style="width: 100%;" >
+                <mat-label>Enter your password</mat-label>
+                <input matInput  #password>
+              </mat-form-field>
+            <div class="buttondiv" style="margin-top: 20px;">
+                <button mat-raised-button color="primary" style="margin-right: 20px;" (click)="validateUser()">Sign In</button> |
+                <button mat-raised-button color="warn" style="margin-left: 20px;" routerLink="/register">Sign Up</button>
+              </div>
+          </form>
+    </div>
+    </div> </div>

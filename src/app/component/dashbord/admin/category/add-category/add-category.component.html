@@ -1,0 +1,18 @@
+<mat-card class="fdiv">
+  <mat-card-title>Add Category</mat-card-title>
+  <mat-card-content>
+     <form>
+       <mat-form-field class="w100" appearance="outline">
+         <mat-label >Title</mat-label>
+         <input matInput type="text" [(ngModel)]="category.title" [ngModelOptions]="{standalone: true}">
+       </mat-form-field>
+       <mat-form-field class="w100" appearance="outline">
+         <mat-label >Description</mat-label>
+         <textarea matInput rows="5" [(ngModel)]="category.description" [ngModelOptions]="{standalone: true}"></textarea>
+       </mat-form-field>
+     </form>
+  </mat-card-content>
+  <div style="    margin-top: 29px;">
+    <button mat-raised-button color="primary" (click)="addNewCategory()" >Add Category</button>
+  </div>
+</mat-card>

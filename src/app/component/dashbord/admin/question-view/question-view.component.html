@@ -1,0 +1,88 @@
+
+<div class="fdiv">
+  <div *ngIf="!viewQuestion; else addQuestion">
+    <button mat-raised-button style="margin:20px" (click)="viewQuestion = !viewQuestion">Add Question</button>
+    <mat-card *ngFor="let que of rowQuestion;let i = index">
+      <mat-card-content>
+        <p><span style="margin-right: 10px">{{i+1}} :</span>{{que.content}}</p>
+        <div style="display: flex;">
+          <button mat-raised-button style="margin:20px">{{que.option1}}</button>
+          <button mat-raised-button style="margin:20px">{{que.option2}}</button>
+          <button mat-raised-button style="margin:20px">{{que.option3}}</button>
+          <button mat-raised-button style="margin:20px">{{que.option4}}</button>
+        </div>
+      </mat-card-content>
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              View Answer
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>{{que.answer}}</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card>
+    <div style="margin-bottom: 50px">
+      <mat-paginator [length]="rowData?rowData.length:0"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[3, 5, 10, 20]"
+                     (page)="changePage($event)">
+      </mat-paginator>
+    </div>
+  </div>
+  <ng-template #addQuestion>
+    <mat-card class="fdiv">
+      <mat-card-title>Add Category</mat-card-title>
+      <mat-card-content>
+        <form>
+          <mat-form-field  appearance="outline">
+            <mat-label >Title</mat-label>
+            <input autocomplete="false" matInput type="text" [(ngModel)]="addQuizData.content" [ngModelOptions]="{standalone: true}">
+<!--            <ckeditor-->
+<!--            [editor]="ClassicEditor"-->
+<!--            name="content"-->
+<!--            [(ngModel)]="addQuizData.content"-->
+<!--            data="<p>Enter text for question</p>"-->
+<!--            >-->
+<!--            </ckeditor>-->
+          </mat-form-field>
+
+          <mat-form-field  appearance="outline">
+            <mat-label >Option 1</mat-label>
+            <input autocomplete="false" matInput type="text" [(ngModel)]="addQuizData.option1" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field  appearance="outline">
+            <mat-label >Option 2</mat-label>
+            <input autocomplete="false" matInput type="text" [(ngModel)]="addQuizData.option2" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field  appearance="outline">
+            <mat-label >Option 3</mat-label>
+            <input autocomplete="false" matInput type="text" [(ngModel)]="addQuizData.option3" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field  appearance="outline">
+            <mat-label >Option 4</mat-label>
+            <input autocomplete="false" matInput type="text" [(ngModel)]="addQuizData.option4" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field  appearance="outline">
+            <mat-label >Correct Answer</mat-label>
+            <input autocomplete="false" matInput type="text" [(ngModel)]="addQuizData.answer" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Choose an category</mat-label>
+            <mat-select required [(ngModel)]="addQuizData.quizDto.qid" [ngModelOptions]="{standalone: true}">
+              <mat-option *ngFor="let cat of categories" [value]="cat.qid">{{cat.title}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <div>
+        <button mat-raised-button color="primary" (click)="addNewQuestion()">Add Quiz</button>
+        <button mat-raised-button style="margin:20px" (click)="viewQuestion = !viewQuestion">View Question</button>
+      </div>
+    </mat-card>
+
+  </ng-template>
+
+</div>
+

@@ -1,0 +1,6 @@
+.example-header-image{
+  background-image: url("../../../../../assets/quizz.png");
+  /*background-image: url("https://pixabay.com/illustrations/icon-question-quiz-clipart-quiz-2425861/");*/
+  background-size: cover;
+
+}

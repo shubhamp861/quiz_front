@@ -1,0 +1,29 @@
+<div class="container" style="margin-top: 80px;">
+  <p>User Details : </p>
+  <table >
+    <tbody >
+    <tr>
+      <td>First Name</td>
+      <td>{{user?user.firstName:''}}</td>
+    </tr>
+    <tr>
+      <td>last Name</td>
+      <td>{{user?user.lastName:''}}</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>{{user?user.email:''}}</td>
+    </tr>
+    <tr>
+      <td>Role</td>
+      <td>{{user?user.rolesSet[0].roleName:''}}</td>
+    </tr>
+    <tr>
+      <td>phone</td>
+      <td>{{user?user.phone:''}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <button mat-raised-button color="primary" style="margin-right: 20px;" >Edit</button> |
+  <button mat-raised-button color="warn" style="margin-left: 20px;" >Save</button>
+</div>

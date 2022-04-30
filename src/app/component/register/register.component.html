@@ -1,0 +1,65 @@
+<div class="mainDiv" style="align-items: center;">
+    <div class="register">
+ <form [formGroup]="userFormControl"  style="margin-top: 20px;">  
+            <mat-label style="margin-left:50px;">Sign Up Tab</mat-label>
+            <hr/>
+            <mat-form-field class="example-full-width">
+              <mat-label>First Name</mat-label>
+                <input type="text" matInput  formControlName="firstName"  
+                   data-placement="right" title="Enter First Name" >  
+                  <mat-error *ngIf = "(firstName.touched) && (firstName.invalid)">
+                    First Name is <strong>required</strong>
+                  </mat-error> 
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Last Name</mat-label>
+                <input type="text" matInput  formControlName="lastName"  
+                   data-placement="right" title="Enter Last Name" >  
+                  <mat-error *ngIf = "(lastName.touched) && (lastName.invalid)">
+                    Last Name is <strong>required</strong>
+                  </mat-error> 
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Username</mat-label>
+                <input type="text" matInput  formControlName="username"  
+                   data-placement="right" title="Enter a User Name" >  
+                  <mat-error *ngIf = "(username.touched) && (username.invalid)">
+                    User Name is <strong>required</strong>
+                  </mat-error> 
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Create Password</mat-label>
+                <input type="text" matInput  formControlName="password"  
+                   data-placement="right" title="Enter Password" >  
+                  <mat-error *ngIf = "(password.touched) && (password.invalid)">
+                    Password is <strong>required</strong>
+                  </mat-error> 
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+                <input type="text" matInput  formControlName="email"  
+                   data-placement="right" title="Enter Email ID" >  
+                  <mat-error *ngIf = "(email.touched) && (email.invalid)">
+                    Email is <strong>required</strong>
+                  </mat-error> 
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Mobile Number</mat-label>
+                <input type="number" matInput  formControlName="phone"  
+                   data-placement="right" title="Enter Mobile Number" >  
+                  <mat-error *ngIf = "(phone.touched) && (phone.invalid)">
+                    Mobile Number is <strong>required</strong>
+                  </mat-error> 
+            </mat-form-field> 
+            <div class="buttondiv" style="margin-left: 46px;margin-top: 20px;">
+              <button mat-raised-button color="primary"  (click)="updateProfile()" style="margin-right: 20px;">Register</button>
+              <button mat-raised-button color="warn" routerLink="/login">Log IN</button>
+            </div>  
+        </form>  
+    </div>
+</div>

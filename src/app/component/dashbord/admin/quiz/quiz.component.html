@@ -1,0 +1,71 @@
+<div class="fdiv" *ngIf="showAdd; else showTemp">
+  <mat-card>
+    <mat-list>
+      <div mat-subheader>All Quiz</div>
+      <mat-list-item *ngFor="let c of quizs">
+        <mat-icon mat-list-icon>quiz</mat-icon>
+        <div mat-line>{{c.title}}</div>
+        <div mat-line>{{c.categoryDto.title}}</div>
+        <mat-divider></mat-divider>
+        <mat-card-actions>
+
+          <button mat-stroked-button color="primary" >Max Mark: {{c.maxMarks}}</button>
+          <button mat-stroked-button color="primary" >No of Question {{c.noOfQuestion}}</button>
+          <button mat-raised-button color="warm" (click)="update(c.qid)">Update</button>
+          <button mat-stroked-button color="warm" (click)="delete(c.qid)">Delete</button>
+          <button mat-raised-button color="primary" [routerLink]="'/ADMIN/question/'+c.qid+'/'+c.title">Attempt</button>
+        </mat-card-actions>
+      </mat-list-item>
+    </mat-list>
+
+    <div style="display: flex;justify-content: space-between">
+      <div style="    margin-top: 15px;">
+        <button mat-raised-button color="primary" (click)="showAdd = !showAdd">New Quiz</button>
+      </div>
+      <div>
+        <mat-paginator [length]="rowData?rowData.length:0"
+                       [pageSize]="5"
+                       [pageSizeOptions]="[3, 5, 10, 20]"
+                       (page)="changePage($event)">
+        </mat-paginator>
+      </div>
+    </div>
+
+  </mat-card>
+</div>
+<ng-template #showTemp>
+  <mat-card class="fdiv">
+    <mat-card-title>Add Category</mat-card-title>
+    <mat-card-content>
+      <form>
+        <mat-form-field  appearance="outline">
+          <mat-label >Title</mat-label>
+          <input autocomplete="false" matInput type="text" [(ngModel)]="addQuizData.title" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field  appearance="outline">
+          <mat-label >Description</mat-label>
+          <input autocomplete="false" matInput type="text" [(ngModel)]="addQuizData.description" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field  appearance="outline">
+          <mat-label >Max Marks</mat-label>
+          <input autocomplete="false" matInput type="text" [(ngModel)]="addQuizData.maxMarks" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field  appearance="outline">
+          <mat-label >No Of Question</mat-label>
+          <input autocomplete="false" matInput type="text" [(ngModel)]="addQuizData.noOfQuestion" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose an category</mat-label>
+          <mat-select required [(ngModel)]="addQuizData.categoryDto.cid" [ngModelOptions]="{standalone: true}">
+            <mat-option *ngFor="let cat of categories" [value]="cat.cid">{{cat.title}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <div>
+      <button mat-raised-button color="primary" (click)="addNewquizs()">Add Quiz</button>
+      <button mat-raised-button color="primary" (click)="showAdd = !showAdd" style="margin-left: 20px">View Quiz</button>
+    </div>
+  </mat-card>
+
+</ng-template>

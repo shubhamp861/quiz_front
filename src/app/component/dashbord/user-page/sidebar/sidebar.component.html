@@ -1,0 +1,14 @@
+<mat-card style="background-color: #f2fafa91">
+  <mat-action-list>
+    <div mat-subheader>Menu</div>
+  </mat-action-list>
+  <mat-list role="list">
+    <button class="button-div"  mat-raised-button routerLink="/USER"> <mat-list-item role="listitem"><mat-icon mat-list-icon>home</mat-icon>Home</mat-list-item></button>
+    <button class="button-div"  style="margin-right: 20px" mat-raised-button [routerLink]="'/USER/view-quiz/'+c.cid" *ngFor="let c of category">
+      <mat-list-item role="listitem">
+<!--        <mat-icon mat-list-icon>home</mat-icon>-->
+        {{c.title}}
+      </mat-list-item>
+    </button>
+  </mat-list>
+</mat-card>

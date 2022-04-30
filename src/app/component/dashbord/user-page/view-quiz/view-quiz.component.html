@@ -1,0 +1,22 @@
+<p>Available Quiz</p>
+<div *ngFor="let quiz of QuizData" style="margin: 20px;width: 500px;">
+  <mat-card class="example-card" >
+    <mat-card-header >
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{quiz.title}}</mat-card-title>
+      <mat-card-subtitle>{{quiz.categoryDto.title}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{quiz.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+<!--      <button mat-stroked-button color="accent">View</button>-->
+      <button mat-stroked-button color="primary" [routerLink]="'/USER/instructe/'+quiz.qid">Start</button>
+      <button mat-stroked-button color="primary">Question : {{quiz.noOfQuestion}}</button>
+      <button mat-stroked-button color="primary">M.M : {{quiz.maxMarks}}</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
