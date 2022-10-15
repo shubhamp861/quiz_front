@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit,AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.username.nativeElement.value = "user";
-    this.password.nativeElement.value = "user";
+    //this.username.nativeElement.value = "user";
+    //this.password.nativeElement.value = "user";
   }
 
 }
