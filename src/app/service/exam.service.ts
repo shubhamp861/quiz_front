@@ -5,7 +5,9 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class ExamService {
-  baseURL = "http://localhost:8080";
+  //baseURL = "http://localhost:8080";
+  baseURL = "https://app-quiz-bck.herokuapp.com";
+  
   constructor(private _http:HttpClient) {}
 
   getAllCategory=()=>{
