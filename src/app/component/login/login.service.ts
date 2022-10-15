@@ -12,7 +12,9 @@ export class LoginService {
   userLoginSubscriber:Subject<{islogIN:boolean,username:string}>= new Subject();
 
   constructor(private _http: HttpClient,private _route:Router,private _snak:MatSnackBar) { }
-  baseUrl = "http://localhost:8080";
+  //baseUrl = "http://localhost:8080";
+  baseUrl = "https://app-quiz-bck.herokuapp.com";
+  
   getToken(logindata: any) {
     return this._http.post(`${this.baseUrl}/token`, logindata)
     .subscribe((data:any) => {
